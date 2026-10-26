@@ -18,11 +18,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:Ruby_Doris_Smith-Robinson.jpg"
  },
  "ad-williams": {
-  "status": "saved",
-  "file": "Biden_at_Ebenezer_Baptist_Church_(52635229253).jpg",
-  "license": "Public domain",
-  "author": "The White House",
-  "page": "https://commons.wikimedia.org/wiki/File:Biden_at_Ebenezer_Baptist_Church_(52635229253).jpg"
+  "status": "removed (article image showed the church, not him)"
  },
  "sw-williams": {
   "status": "saved",
@@ -36,111 +32,130 @@
   "title": "Harold I. Bearden"
  },
  "archer": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Samuel Archer"
  },
  "bowen": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "saved",
+  "file": "John_Wesley_Edward_Bowen_(page_204_crop).jpg",
+  "license": "Public domain",
+  "author": "edited by Prof. J. W. B. Bowen, Ph.D., D.D., Secretary of the Congress",
+  "page": "https://commons.wikimedia.org/wiki/File:John_Wesley_Edward_Bowen_(page_204_crop).jpg"
  },
  "brawley": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "James P. Brawley"
  },
  "cary": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "saved",
+  "file": "Aliceduggedcary.jpg",
+  "license": "Public domain",
+  "author": "Sara J. Duncan",
+  "page": "https://commons.wikimedia.org/wiki/File:Aliceduggedcary.jpg"
  },
  "usher": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "not free",
+  "license": "No restrictions",
+  "page": "https://commons.wikimedia.org/wiki/File:Bazoline_Usher_(13269931405).jpg"
  },
  "pace": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "saved",
+  "file": "Dinah_Watts_Pace.jpg",
+  "license": "Public domain",
+  "author": "Unknown authorUnknown author",
+  "page": "https://commons.wikimedia.org/wiki/File:Dinah_Watts_Pace.jpg"
  },
  "towns": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "George A. Towns"
  },
  "fountain": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "William A. Fountain"
  },
  "turner": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "saved",
+  "file": "Henry_McNeil_Turner.jpg",
+  "license": "Public domain",
+  "author": "Unknown photographer",
+  "page": "https://commons.wikimedia.org/wiki/File:Henry_McNeil_Turner.jpg"
  },
  "williamson": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Q. V. Williamson"
  },
  "calhoun": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "John H. Calhoun"
  },
  "proctor": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "saved",
+  "file": "Henry_H_Proctor.jpg",
+  "license": "Public domain",
+  "author": "Unknown authorUnknown author",
+  "page": "https://commons.wikimedia.org/wiki/File:Henry_H_Proctor.jpg"
  },
  "price": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Luther Judson Price"
  },
  "irene-jackson": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Irene Dobbs Jackson"
  },
  "golightly": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Cornelius Golightly"
  },
  "alexander": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "T. M. Alexander"
  },
  "jesse-hill": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Jesse Hill"
  },
  "russell": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Herman J. Russell"
  },
  "norris-herndon": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Norris B. Herndon"
  },
  "haugabrooks": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Geneva Haugabrooks"
  },
  "henderson": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Freddye Scarborough Henderson"
  },
  "blayton": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Jesse B. Blayton"
  },
  "penn": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "saved",
+  "file": "William_f_Penn_1902.jpg",
+  "license": "Public domain",
+  "author": "Unknown authorUnknown author",
+  "page": "https://commons.wikimedia.org/wiki/File:William_f_Penn_1902.jpg"
  },
  "moses-amos": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Moses Amos"
  },
  "miles-amos": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Miles Amos"
  },
  "nash": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Homer E. Nash"
  },
  "bennette": {
-  "status": "error",
-  "error": "HTTP Error 429: Too Many Requests"
+  "status": "no article image",
+  "title": "Fred C. Bennette"
  }
 }
