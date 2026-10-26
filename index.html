@@ -3215,6 +3215,12 @@ header .proto{font:600 11px/1 system-ui,sans-serif;letter-spacing:.08em;text-tra
 #timeline-embed .tl-slide .tl-text p.sv-src a{color:var(--muted)!important;text-decoration:underline;text-underline-offset:2px;text-shadow:none!important;background:none!important}
 #timeline-embed .tl-slide .tl-media .tl-credit{font-size:12px!important;font-style:italic;text-align:left!important;margin-top:2px!important}
 .sv-ms li b:empty::before{content:'·';opacity:.6}
+#timeline-embed .tl-media .tl-credit .sv-mname{display:block;font-style:normal;font-size:13px;line-height:1.35;margin-bottom:3px}
+#timeline-embed .tl-media .tl-credit .sv-mphoto{display:block}
+#timeline-embed .tl-media .tl-credit .sv-msrc{display:block;margin-top:6px;font-style:italic;line-height:1.4}
+#timeline-embed .tl-media .tl-caption:empty{display:none}
+#timeline-embed .tl-media .tl-credit a{color:#5a4a3a!important;text-decoration:underline;text-underline-offset:2px}
+#timeline-embed .tl-media .tl-credit{max-width:300px}
 #timeline-embed .tl-media img{border-radius:6px;box-shadow:0 4px 16px rgba(43,33,24,.2);max-height:100%!important}
 #timeline-embed .tl-slide .tl-caption,#timeline-embed .tl-slide .tl-credit{color:var(--muted)!important;font-family:system-ui,sans-serif!important}
 /* narrower photo column on wide screens */
@@ -3394,8 +3400,8 @@ function buildSlides() {
         return "<a href='#' data-goto='" + o.id + "'>" + esc(o.name) + '</a>'; }).join(', ') + '</p>';
     }).join('');
     p.html = (p.summary ? "<p class='sv-sum'>" + esc(p.summary) + '</p>' : '') +
-             (lis ? "<ul class='sv-ms'>" + lis + '</ul>' : '') + con +
-             (p.src ? "<p class='sv-src'>Sources: " + sourcesHtml(p.src, p.links) + '</p>' : '');
+             (lis ? "<ul class='sv-ms'>" + lis + '</ul>' : '') + con;
+    p.srcHtml = p.src ? 'Sources: ' + sourcesHtml(p.src, p.links) : '';
   });
 }
 
@@ -3440,7 +3446,10 @@ function buildData(filter){
   return {list:list, data:{events:list.map(function(p){
       var ev={unique_id:'p-'+p.id, group:p.g, start_date:{year:p.born}, end_date:{year:p.died},
               display_date:p.dd, text:{headline:esc(p.name), text:p.html}, background:{color:GROUPS[p.g][1]}};
-      if(photo[p.id]) ev.media={url:photo[p.id], caption:esc(p.name)+' ('+esc(p.dd)+')', credit:p.cred?'Photo: '+esc(p.cred):''};
+      // Sources sit under the photo; people without a photo get them at the end of their story.
+      if(photo[p.id]) ev.media={url:photo[p.id], caption:'',
+        credit:"<span class='sv-mname'>"+esc(p.name)+' ('+esc(p.dd)+')</span>'+(p.cred?"<span class='sv-mphoto'>Photo: "+esc(p.cred)+'</span>':'')+(p.srcHtml?"<span class='sv-msrc'>"+p.srcHtml+'</span>':'')};
+      else if(p.srcHtml) ev.text.text = p.html + "<p class='sv-src'>" + p.srcHtml + '</p>';
       return ev;})}};
 }
 function middleIndex(list){
