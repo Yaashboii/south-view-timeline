@@ -18,7 +18,7 @@ PEOPLE = {
  "penn": "William F. Penn", "moses-amos": "Moses Amos", "miles-amos": "Miles Amos", "nash": "Homer E. Nash",
  "bennette": "Fred C. Bennette",
 }
-FREE = re.compile(r"^(public domain|pd|cc0|cc[- ]by)", re.I)
+FREE = re.compile(r"^(public domain|pd|cc0|cc[- ]by|no restrictions)", re.I)
 
 def get(url):
     return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30).read()
