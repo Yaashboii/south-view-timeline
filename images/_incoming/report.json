@@ -1,0 +1,87 @@
+{
+ "borders": {
+  "status": "saved",
+  "size": [
+   224,
+   300
+  ]
+ },
+ "bryant": {
+  "status": "saved",
+  "size": [
+   234,
+   300
+  ]
+ },
+ "neal": {
+  "status": "saved",
+  "size": [
+   400,
+   449
+  ]
+ },
+ "lillian-lewis": {
+  "status": "error",
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "cunningham": {
+  "status": "saved",
+  "size": [
+   760,
+   947
+  ]
+ },
+ "washington-king": {
+  "status": "saved",
+  "size": [
+   726,
+   1200
+  ]
+ },
+ "willis": {
+  "status": "saved",
+  "size": [
+   565,
+   645
+  ]
+ },
+ "duke-pearson": {
+  "status": "saved",
+  "size": [
+   600,
+   600
+  ]
+ },
+ "donald-reeves": {
+  "status": "saved",
+  "size": [
+   180,
+   270
+  ]
+ },
+ "dave-harper": {
+  "status": "error",
+  "error": "HTTP Error 404: Not Found"
+ },
+ "agnes-jones": {
+  "status": "saved",
+  "size": [
+   1280,
+   720
+  ]
+ },
+ "william-guest": {
+  "status": "saved",
+  "size": [
+   793,
+   1024
+  ]
+ },
+ "john-harden": {
+  "status": "saved",
+  "size": [
+   329,
+   512
+  ]
+ }
+}
