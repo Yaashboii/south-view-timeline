@@ -18,7 +18,8 @@
   "page": "https://commons.wikimedia.org/wiki/File:Ruby_Doris_Smith-Robinson.jpg"
  },
  "ad-williams": {
-  "status": "removed (article image showed the church, not him)"
+  "status": "skipped (image may not show this person)",
+  "file": "Biden_at_Ebenezer_Baptist_Church_(52635229253).jpg"
  },
  "sw-williams": {
   "status": "saved",
@@ -159,5 +160,99 @@
  "bennette": {
   "status": "no article image",
   "title": "Fred C. Bennette"
+ },
+ "borders": {
+  "status": "skipped (image may not show this person)",
+  "file": "A.T._Walden_1950.jpg"
+ },
+ "bryant": {
+  "status": "no article image",
+  "title": "P. James Bryant"
+ },
+ "mclendon": {
+  "status": "no article image",
+  "title": "Frederick Earl McLendon"
+ },
+ "lillian-lewis": {
+  "status": "no article image",
+  "title": "Lillian Miles Lewis"
+ },
+ "milton": {
+  "status": "no article image",
+  "title": "Lorimer D. Milton"
+ },
+ "agnes-jones": {
+  "status": "no article image",
+  "title": "M. Agnes Jones"
+ },
+ "graham-jackson": {
+  "status": "no article image",
+  "title": "Graham W. Jackson Sr."
+ },
+ "willis": {
+  "status": "no article image",
+  "title": "Chuck Willis"
+ },
+ "duke-pearson": {
+  "status": "no article image",
+  "title": "Duke Pearson"
+ },
+ "william-guest": {
+  "status": "skipped (image may not show this person)",
+  "file": "Gladys_Knight_and_the_Pips_on_Soul_Train.jpg"
+ },
+ "donald-reeves": {
+  "status": "no article image",
+  "title": "Donald Reeves"
+ },
+ "dave-harper": {
+  "status": "no article image",
+  "title": "Dave Harper (baseball)"
+ },
+ "ralph-johnson": {
+  "status": "no article image",
+  "title": "Ralph Johnson (baseball)"
+ },
+ "mlk-jr": {
+  "status": "saved",
+  "file": "Martin_Luther_King,_Jr._and_Lyndon_Johnson_(cropped).jpg",
+  "license": "Public domain",
+  "author": "Yoichi Okamoto",
+  "page": "https://commons.wikimedia.org/wiki/File:Martin_Luther_King,_Jr._and_Lyndon_Johnson_(cropped).jpg"
+ },
+ "julian-bond": {
+  "status": "saved",
+  "file": "Julian_Bond_(48591893556).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "John Mathew Smith &amp; www.celebrity-photos.com from Laurel Maryland, USA",
+  "page": "https://commons.wikimedia.org/wiki/File:Julian_Bond_(48591893556).jpg"
+ },
+ "clara-howard": {
+  "status": "saved",
+  "file": "Clara_A._Howard_0137.jpg",
+  "license": "Public domain",
+  "author": "Unknown photographer",
+  "page": "https://commons.wikimedia.org/wiki/File:Clara_A._Howard_0137.jpg"
+ },
+ "mattiwilda-dobbs": {
+  "status": "saved",
+  "file": "Mattiwilda_Dobbs_1957.JPG",
+  "license": "Public domain",
+  "author": "Sol Hurok (concert promoter). There is a photographer's signature at lower right, but I can't make out what it says.",
+  "page": "https://commons.wikimedia.org/wiki/File:Mattiwilda_Dobbs_1957.JPG"
+ },
+ "heywood": {
+  "status": "saved",
+  "file": "Eddie_Heywood,_Three_Deuces,_New_York,_N.Y.,_ca._May_1946_(William_P._Gottlieb).jpg",
+  "license": "Public domain",
+  "author": "William P. Gottlieb",
+  "page": "https://commons.wikimedia.org/wiki/File:Eddie_Heywood,_Three_Deuces,_New_York,_N.Y.,_ca._May_1946_(William_P._Gottlieb).jpg"
+ },
+ "billy-wright": {
+  "status": "saved",
+  "file": "Billy_Wright_publicity_photo_for_Peacock_Records.jpg",
+  "license": "PDM-owner",
+  "author": "Unknown authorUnknown author",
+  "page": "https://commons.wikimedia.org/wiki/File:Billy_Wright_publicity_photo_for_Peacock_Records.jpg"
  }
 }
