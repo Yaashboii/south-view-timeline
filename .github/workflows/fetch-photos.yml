@@ -1,0 +1,21 @@
+name: Fetch free photos
+on:
+  push:
+    paths: [".github/workflows/fetch-photos.yml", "tools/fetch_photos.py"]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pillow
+      - run: python tools/fetch_photos.py
+      - name: Commit photos
+        run: |
+          git config user.name "photo-bot"
+          git config user.email "photo-bot@users.noreply.github.com"
+          git add images
+          git diff --cached --quiet || (git commit -m "Add freely licensed photos from Wikimedia Commons" && git push)
