@@ -6,6 +6,13 @@ from PIL import Image
 
 UA = {"User-Agent": "SouthViewTimeline/1.0 (Georgia Tech class project; github.com/Yaashboii/south-view-timeline)"}
 PEOPLE = {
+ "mlk-jr": "Martin Luther King Jr.", "julian-bond": "Julian Bond", "borders": "William Holmes Borders",
+ "bryant": "P. James Bryant", "clara-howard": "Clara Ann Howard", "mclendon": "Frederick Earl McLendon",
+ "lillian-lewis": "Lillian Miles Lewis", "milton": "Lorimer D. Milton", "agnes-jones": "M. Agnes Jones",
+ "mattiwilda-dobbs": "Mattiwilda Dobbs", "graham-jackson": "Graham W. Jackson Sr.", "heywood": "Eddie Heywood",
+ "willis": "Chuck Willis", "billy-wright": "Billy Wright (musician)", "duke-pearson": "Duke Pearson",
+ "william-guest": "William Guest (singer)", "donald-reeves": "Donald Reeves", "dave-harper": "Dave Harper (baseball)",
+ "ralph-johnson": "Ralph Johnson (baseball)",
  "king-sr": "Martin Luther King Sr.", "ad-king": "A. D. King", "robinson": "Ruby Doris Smith-Robinson",
  "ad-williams": "Adam Daniel Williams", "sw-williams": "Samuel Woodrow Williams", "bearden": "Harold I. Bearden",
  "archer": "Samuel Archer", "bowen": "John W. E. Bowen Sr.", "brawley": "James P. Brawley",
@@ -60,8 +67,9 @@ for pid, title in todo.items():
     pg = pages.get(title) or pages.get(title.replace("_", " "))
     if not pg or pg.get("missing") or not pg.get("pageimage"):
         report[pid] = {"status": "no article image", "title": title}; continue
-    fname = pg["pageimage"]; surname = re.sub(r"[^a-z]", "", title.split()[-1].lower().replace("sr.", "").replace("jr.", "")) or title.split()[-2].lower()
-    if title.split()[-1] in ("Sr.", "Jr."): surname = title.split()[-2].lower()
+    fname = pg["pageimage"]; words = re.sub(r"\s*\(.*?\)", "", title).split()
+    if words[-1] in ("Sr.", "Jr."): words = words[:-1]
+    surname = re.sub(r"[^a-z]", "", words[-1].lower())
     if re.search(r"signature|\.svg$", fname, re.I) or surname not in fname.lower().replace("_", " "):
         report[pid] = {"status": "skipped (image may not show this person)", "file": fname}; continue
     files[pid] = fname
@@ -91,6 +99,5 @@ for pid, fname in files.items():
                        "author": strip(meta.get("Artist", {}).get("value"))[:120], "page": ii["descriptionurl"]}
     except Exception as e:
         report[pid] = {"status": "error", "error": str(e)[:200]}
-report["ad-williams"] = {"status": "removed (article image showed the church, not him)"}
 json.dump(report, open("images/photo-report.json", "w"), indent=1)
 print(json.dumps(report, indent=1))
