@@ -254,5 +254,34 @@
   "license": "PDM-owner",
   "author": "Unknown authorUnknown author",
   "page": "https://commons.wikimedia.org/wiki/File:Billy_Wright_publicity_photo_for_Peacock_Records.jpg"
+ },
+ "funderburg": {
+  "status": "no article image",
+  "title": "Frederick Douglass Funderburg"
+ },
+ "roscoe-thomas": {
+  "status": "no article image",
+  "title": "Roscoe Thomas"
+ },
+ "hank-aaron": {
+  "status": "saved",
+  "file": "Hank_Aaron_1974.jpg",
+  "license": "Public domain",
+  "author": "Unknown authorUnknown author",
+  "page": "https://commons.wikimedia.org/wiki/File:Hank_Aaron_1974.jpg"
+ },
+ "sd-cook": {
+  "status": "saved",
+  "file": "Samuel_DuBois_Cook_2011.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Kcook2020",
+  "page": "https://commons.wikimedia.org/wiki/File:Samuel_DuBois_Cook_2011.jpg"
+ },
+ "jean-young": {
+  "status": "saved",
+  "file": "Jean_Childs_Young,_New_York_Amsterdam_News_1977_12_03_pg14_(cropped).jpg",
+  "license": "Public domain",
+  "author": "Unknown authorUnknown author",
+  "page": "https://commons.wikimedia.org/wiki/File:Jean_Childs_Young,_New_York_Amsterdam_News_1977_12_03_pg14_(cropped).jpg"
  }
 }
