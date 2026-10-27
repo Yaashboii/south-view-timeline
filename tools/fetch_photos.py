@@ -6,24 +6,8 @@ from PIL import Image
 
 UA = {"User-Agent": "SouthViewTimeline/1.0 (Georgia Tech class project; github.com/Yaashboii/south-view-timeline)"}
 PEOPLE = {
- "mlk-jr": "Martin Luther King Jr.", "julian-bond": "Julian Bond", "borders": "William Holmes Borders",
- "bryant": "P. James Bryant", "clara-howard": "Clara Ann Howard", "mclendon": "Frederick Earl McLendon",
- "lillian-lewis": "Lillian Miles Lewis", "milton": "Lorimer D. Milton", "agnes-jones": "M. Agnes Jones",
- "mattiwilda-dobbs": "Mattiwilda Dobbs", "graham-jackson": "Graham W. Jackson Sr.", "heywood": "Eddie Heywood",
- "willis": "Chuck Willis", "billy-wright": "Billy Wright (musician)", "duke-pearson": "Duke Pearson",
- "william-guest": "William Guest (singer)", "donald-reeves": "Donald Reeves", "dave-harper": "Dave Harper (baseball)",
- "ralph-johnson": "Ralph Johnson (baseball)",
- "king-sr": "Martin Luther King Sr.", "ad-king": "A. D. King", "robinson": "Ruby Doris Smith-Robinson",
- "ad-williams": "Adam Daniel Williams", "sw-williams": "Samuel Woodrow Williams", "bearden": "Harold I. Bearden",
- "archer": "Samuel Archer", "bowen": "John W. E. Bowen Sr.", "brawley": "James P. Brawley",
- "cary": "Alice Dugged Cary", "usher": "Bazoline Estelle Usher", "pace": "Dinah Watts Pace", "towns": "George A. Towns",
- "fountain": "William A. Fountain", "turner": "Henry McNeal Turner", "williamson": "Q. V. Williamson",
- "calhoun": "John H. Calhoun", "proctor": "Henry H. Proctor", "price": "Luther Judson Price",
- "irene-jackson": "Irene Dobbs Jackson", "golightly": "Cornelius Golightly", "alexander": "T. M. Alexander",
- "jesse-hill": "Jesse Hill", "russell": "Herman J. Russell", "norris-herndon": "Norris B. Herndon",
- "haugabrooks": "Geneva Haugabrooks", "henderson": "Freddye Scarborough Henderson", "blayton": "Jesse B. Blayton",
- "penn": "William F. Penn", "moses-amos": "Moses Amos", "miles-amos": "Miles Amos", "nash": "Homer E. Nash",
- "bennette": "Fred C. Bennette",
+ "hank-aaron": "Hank Aaron", "sd-cook": "Samuel DuBois Cook", "jean-young": "Jean Childs Young",
+ "funderburg": "Frederick Douglass Funderburg", "roscoe-thomas": "Roscoe Thomas",
 }
 FREE = re.compile(r"^(public domain|pd|cc0|cc[- ]by|no restrictions)", re.I)
 
