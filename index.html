@@ -3345,6 +3345,13 @@ function parseCSV(text) {
 function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 function slug(s) { return String(s).toLowerCase().replace(/^dr\.?\s+/, '').normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'person'; }
 
+// Photos can be a file in the site's images folder, any image link, or a Google Drive share link.
+// Drive share links point to a viewer page, so turn them into a direct image address.
+function photoUrl(v) {
+  v = String(v || '').trim();
+  var m = v.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=|thumbnail\?id=)([\w-]{10,})/);
+  return m ? 'https://lh3.googleusercontent.com/d/' + m[1] + '=w1000' : v;
+}
 // Turn spreadsheet rows into people. Returns {people, skipped:[messages]}.
 function toPeople(rows) {
   if (!rows.length) throw new Error('empty sheet');
@@ -3373,7 +3380,7 @@ function toPeople(rows) {
       dd: get(r, 'dates shown') || (marker ? 'd. ' + died : diedRaw === '' ? born + '–present' : born + '–' + died),
       g: get(r, 'theme') || 'Other', summary: get(r, 'summary'), ms: ms,
       threads: get(r, 'connected through').split(';').map(function (s) { return s.trim(); }).filter(Boolean),
-      src: get(r, 'sources'), links: get(r, 'source links'), photo: get(r, 'photo'), cred: get(r, 'photo credit')
+      src: get(r, 'sources'), links: get(r, 'source links'), photo: photoUrl(get(r, 'photo')), cred: get(r, 'photo credit')
     });
   });
   if (!people.length) throw new Error('no usable rows');
