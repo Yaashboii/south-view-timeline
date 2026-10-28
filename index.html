@@ -3359,29 +3359,38 @@ function toPeople(rows) {
   function col(name) { return head.indexOf(name); }
   if (col('name') < 0 || col('born') < 0) throw new Error('missing Name/Born columns');
   var get = function (r, name) { var i = col(name); return i < 0 ? '' : String(r[i] == null ? '' : r[i]).trim(); };
-  var people = [], skipped = [], used = {};
+  var people = [], skipped = [], used = {}, byName = {};
   rows.slice(1).forEach(function (r, n) {
     var name = get(r, 'name'); if (!name) return;
+    // A "Show on timeline" column set to No hides a row (handy for reviewing form submissions).
+    if (/^(no|n|false|hide|hidden)$/i.test(get(r, 'show on timeline'))) return;
     var born = parseInt(get(r, 'born').replace(/,/g, ''), 10), diedRaw = get(r, 'died').replace(/,/g, ''), died = parseInt(diedRaw, 10);
     var marker = false;
     // No birth year: show a short marker at the death year instead of a lifespan bar.
     if (isNaN(born)) { if (isNaN(died)) { skipped.push(name + ' (needs a Born or Died year)'); return; } born = died; marker = true; }
     if (diedRaw === '') died = new Date().getFullYear();
     if (isNaN(died) || died < born) { skipped.push(name + ' (check Died year)'); return; }
-    var id = slug(name), k = 2; while (used[id]) id = slug(name) + '-' + (k++); used[id] = 1;
+    // The same name twice (for example, a corrected form submission): the later row replaces the earlier one.
+    var key = name.toLowerCase().replace(/\s+/g, ' '), prev = byName[key];
+    var id = prev ? prev.id : slug(name), k = 2; if (!prev) { while (used[id]) id = slug(name) + '-' + (k++); used[id] = 1; }
     var ms = [];
     for (var m = 1; m <= 8; m++) {
       var v = get(r, 'milestone ' + m); if (!v) continue;
       var mm = v.match(/^\s*([^:]{1,24}):\s*([\s\S]+)$/);
       ms.push(mm ? [mm[1].trim(), mm[2].trim()] : ['', v]);
     }
-    people.push({
+    var thr = get(r, 'connected through');
+    var person = {
       id: id, name: name, born: born, died: died, marker: marker,
       dd: get(r, 'dates shown') || (marker ? 'd. ' + died : diedRaw === '' ? born + '–present' : born + '–' + died),
       g: get(r, 'theme') || 'Other', summary: get(r, 'summary'), ms: ms,
-      threads: get(r, 'connected through').split(';').map(function (s) { return s.trim(); }).filter(Boolean),
-      src: get(r, 'sources'), links: get(r, 'source links'), photo: photoUrl(get(r, 'photo')), cred: get(r, 'photo credit')
-    });
+      // Typed in the sheet: separated by semicolons. Ticked in the form: Google separates them with commas.
+      threads: (thr.indexOf(';') >= 0 ? thr.split(';') : thr.split(/,\s*/)).map(function (s) { return s.trim(); }).filter(Boolean),
+      src: get(r, 'sources'), links: get(r, 'source links'),
+      photo: photoUrl(get(r, 'photo').split(/,\s*(?=https?:)/)[0]), cred: get(r, 'photo credit')
+    };
+    if (prev) people[people.indexOf(prev)] = person; else people.push(person);
+    byName[key] = person;
   });
   if (!people.length) throw new Error('no usable rows');
   return { people: people, skipped: skipped };
@@ -3586,15 +3595,44 @@ function loadCsv(url) {
     .then(function (r) { clearTimeout(timer); if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
     .then(function (t) { if (/^\s*</.test(t)) throw new Error('sheet is not shared'); return parseCSV(t); });
 }
+// Put the rows of a second tab (the Google Form's responses) under the main tab's columns.
+function mergeTables(main, extra) {
+  if (!extra || extra.length < 2) return main;
+  var head = main[0].slice(), low = head.map(function (h) { return String(h).trim().toLowerCase(); });
+  var xhead = extra[0].map(function (h) { return String(h).trim().toLowerCase(); });
+  xhead.forEach(function (h, i) { if (h && low.indexOf(h) < 0) { low.push(h); head.push(extra[0][i]); } });
+  var out = [head].concat(main.slice(1).map(function (r) { return r.slice(); }));
+  extra.slice(1).forEach(function (r) {
+    var row = low.map(function () { return ''; });
+    xhead.forEach(function (h, i) { var j = low.indexOf(h); if (j >= 0) row[j] = r[i] == null ? '' : r[i]; });
+    out.push(row);
+  });
+  return out;
+}
+var FORM_TAB = 'Form Responses';
 function loadSheet() {
-  var override = null, jsonpOverride = null;
-  try { var qs = new URLSearchParams(location.search); override = qs.get('sheet'); jsonpOverride = qs.get('jsonp'); } catch (e) {}
-  if (override) return loadCsv(override).then(toPeople);
+  var override = null, jsonpOverride = null, formOverride = null;
+  try { var qs = new URLSearchParams(location.search); override = qs.get('sheet'); jsonpOverride = qs.get('jsonp'); formOverride = qs.get('form'); } catch (e) {}
+  // The form tab is optional: if it's missing or empty, the timeline just uses the main tab.
+  function withForm(mainRows, loadForm) {
+    return loadForm().then(function (formRows) { return mergeTables(mainRows, formRows); }, function () { return mainRows; });
+  }
+  if (override) return loadCsv(override).then(function (rows) {
+    return formOverride ? withForm(rows, function () { return loadCsv(formOverride); }) : rows; }).then(toPeople);
   if (jsonpOverride) return loadJsonp(jsonpOverride + (jsonpOverride.indexOf('?') >= 0 ? '&' : '?') + 'cb={cb}').then(toPeople);
   if (!SHEET_ID) return Promise.reject(new Error('no sheet configured'));
   var base = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?headers=1';
-  return loadJsonp(base + '&tqx=' + encodeURIComponent('out:json;responseHandler:') + '{cb}').then(toPeople)
-    .catch(function (err) { console.warn('Script load failed, trying CSV:', err && err.message); return loadCsv(base + '&tqx=out:csv').then(toPeople); });
+  var formBase = base + '&sheet=' + encodeURIComponent(FORM_TAB);
+  var json = '&tqx=' + encodeURIComponent('out:json;responseHandler:') + '{cb}';
+  // Main tab = the sheet's first tab (gid 0); fall back to the default tab if that id doesn't exist.
+  return loadJsonp(base + '&gid=0' + json).catch(function () { return loadJsonp(base + json); })
+    .then(function (rows) { return withForm(rows, function () { return loadJsonp(formBase + json); }); })
+    .then(toPeople)
+    .catch(function (err) {
+      console.warn('Script load failed, trying CSV:', err && err.message);
+      return loadCsv(base + '&gid=0&tqx=out:csv').then(function (rows) {
+        return withForm(rows, function () { return loadCsv(formBase + '&tqx=out:csv'); }); }).then(toPeople);
+    });
 }
 function start(result, live, why) {
   PEOPLE = result.people;
