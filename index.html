@@ -3604,7 +3604,7 @@ function mergeTables(main, extra) {
   var out = [head].concat(main.slice(1).map(function (r) { return r.slice(); }));
   extra.slice(1).forEach(function (r) {
     var row = low.map(function () { return ''; });
-    xhead.forEach(function (h, i) { var j = low.indexOf(h); if (j >= 0) row[j] = r[i] == null ? '' : r[i]; });
+    xhead.forEach(function (h, i) { var j = low.indexOf(h), v = r[i] == null ? '' : String(r[i]); if (j >= 0 && v.trim() !== '') row[j] = v; });
     out.push(row);
   });
   return out;

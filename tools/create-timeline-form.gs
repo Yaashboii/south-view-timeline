@@ -90,8 +90,9 @@ function createTimelineForm() {
     .setHelpText('Year only.');
   form.addTextItem().setTitle('Dates shown')
     .setHelpText('Optional. Only fill this in if the dates should read differently, for example "c. 1874–1969".');
-  form.addListItem().setTitle('Theme').setRequired(true).setChoiceValues(THEMES)
-    .setHelpText('Which group on the timeline this person belongs to.');
+  form.addMultipleChoiceItem().setTitle('Theme').setRequired(true).setChoiceValues(THEMES).showOtherOption(true)
+    .setHelpText('Which group on the timeline this person belongs to. To start a new group, choose "Other" and type its name; ' +
+                 'use the exact same name for everyone in that group.');
   form.addParagraphTextItem().setTitle('Summary').setRequired(true)
     .setHelpText('One or two sentences about who they were. Example: "The first African American woman elected to the Georgia General Assembly."');
 
